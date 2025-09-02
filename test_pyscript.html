@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript Test</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+    <h1>PyScript Test Page</h1>
+    <div id="output"></div>
+
+    <script type="py">
+        print("PyScript is working!")
+        from js import document
+        
+        # Create a paragraph element
+        p = document.createElement("p")
+        p.textContent = "This text was added by PyScript"
+        
+        # Append it to the output div
+        output_div = document.getElementById("output")
+        output_div.appendChild(p)
+    </script>
+</body>
+</html>

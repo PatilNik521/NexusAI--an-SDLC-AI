@@ -1,0 +1,399 @@
+/**
+ * AI-Powered SDLC System - Main Stylesheet
+ * Contains custom styles beyond Tailwind CSS
+ */
+
+/* ===== Base Styles ===== */
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #10b981;
+    --secondary-dark: #059669;
+    --background: #111827;
+    --background-light: #1f2937;
+    --background-lighter: #374151;
+    --text: #f3f4f6;
+    --text-muted: #9ca3af;
+    --border: #4b5563;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --success: #10b981;
+}
+
+/* Light mode variables */
+.light-mode {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #059669;
+    --secondary-dark: #047857;
+    --background: #f9fafb;
+    --background-light: #f3f4f6;
+    --background-lighter: #e5e7eb;
+    --text: #111827;
+    --text-muted: #6b7280;
+    --border: #d1d5db;
+    --danger: #dc2626;
+    --warning: #d97706;
+    --success: #059669;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+/* ===== Scrollbar Styles ===== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--background-lighter);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* ===== Loading Screen ===== */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--background-lighter);
+    border-top: 5px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== Sidebar Styles ===== */
+.sidebar {
+    background-color: var(--background-light);
+    border-right: 1px solid var(--border);
+    transition: transform 0.3s ease;
+}
+
+.sidebar-item {
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.sidebar-item:hover {
+    background-color: var(--background-lighter);
+}
+
+.sidebar-item.active {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.sidebar-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--primary);
+}
+
+/* ===== Header Styles ===== */
+.header {
+    background-color: var(--background-light);
+    border-bottom: 1px solid var(--border);
+}
+
+/* ===== Main Content Styles ===== */
+.main-content {
+    background-color: var(--background);
+}
+
+/* ===== Card Styles ===== */
+.card {
+    background-color: var(--background-light);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Button Styles ===== */
+.btn {
+    transition: all 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== Form Styles ===== */
+input, select, textarea {
+    background-color: var(--background-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    outline: none;
+}
+
+/* ===== Code Editor Styles ===== */
+.code-editor {
+    background-color: var(--background-light);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.code-editor-header {
+    background-color: var(--background-lighter);
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-tab {
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.editor-tab:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.editor-tab.active {
+    background-color: var(--background-light);
+    border-bottom: 2px solid var(--primary);
+}
+
+.code-editor-content {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+/* ===== AI Model Selector Styles ===== */
+.ai-model-selector {
+    position: relative;
+    cursor: pointer;
+}
+
+.ai-model-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background-color: var(--background-light);
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+.ai-model-option {
+    padding: 0.75rem 1rem;
+    transition: background-color 0.2s;
+}
+
+.ai-model-option:hover {
+    background-color: var(--background-lighter);
+}
+
+/* ===== Tooltip Styles ===== */
+.tooltip {
+    position: absolute;
+    background-color: var(--background-lighter);
+    color: var(--text);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    z-index: 50;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--background-lighter);
+}
+
+/* ===== Modal Styles ===== */
+.modal {
+    background-color: var(--background-light);
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+}
+
+.modal.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ===== Notification Styles ===== */
+.notification {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--background-light);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateX(120%);
+    transition: transform 0.3s ease-out;
+    z-index: 100;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left-color: var(--success);
+}
+
+.notification.error {
+    border-left-color: var(--danger);
+}
+
+.notification.warning {
+    border-left-color: var(--warning);
+}
+
+/* ===== Animation Styles ===== */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== Responsive Styles ===== */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 40;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 30;
+    }
+    
+    .sidebar-overlay.open {
+        display: block;
+    }
+}
+
+/* ===== Utility Classes ===== */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease-in-out;
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.3s ease-in-out;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.3s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
